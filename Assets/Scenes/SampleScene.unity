@@ -3672,6 +3672,7 @@ GameObject:
   - component: {fileID: 1765747372}
   - component: {fileID: 1765747374}
   - component: {fileID: 1765747377}
+  - component: {fileID: 1765747378}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3836,3 +3837,17 @@ MonoBehaviour:
   armRenderer: {fileID: 931863954}
   armPivot: {fileID: 258614230}
   characterRenderer: {fileID: 1208486201}
+--- !u!114 &1765747378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765747369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da8703caed4ceb41b7eda581be8aeff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawnPosition: {fileID: 450675999}
+  testPrefab: {fileID: 8775988773963213433, guid: 4806a237b16e4d64b809d6417867908a, type: 3}

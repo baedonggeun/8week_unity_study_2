@@ -42,6 +42,7 @@ public class PlayerInputController : TopDownCharacterController
     public void OnFire(InputValue value)        //발사버튼 누를 때마다 
     {
         //Debug.Log("OnFire" + value.ToString());
+        IsAttacking = value.isPressed;
     }
 
 }

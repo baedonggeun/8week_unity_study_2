@@ -3,10 +3,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * 탑다운캐릭터컨트롤러가 3개의 event를 가지고 있고
+ * 각각의 이벤트를 구독한 클래스, 함수들에서 해당 이벤트를 호출하면
+ * callmoveevent 함수 같은데에서 null인지 아닌지 예외처리 후 이벤트를 실행해줌?
+ * 
+ */
+
 public class TopDownCharacterController : MonoBehaviour
 {
     public event Action<Vector2> OnMoveEvent;           //event -> 외부에서 호출하지 못하게 막는 기능
     public event Action<Vector2> OnLookEvent;
+    public event Action OnAttackEvent;
+
+    private float _timeSinceLastAttack = float.MaxValue;
+
+    protected bool IsAttacking { get; set; }
+
+
+    protected virtual void Update()
+    {
+        HandleAttackDelay();
+    }
+
+    private void HandleAttackDelay()
+    {
+        if(_timeSinceLastAttack <= 0.2f)        //todo
+        {
+            _timeSinceLastAttack += Time.deltaTime;
+        }
+        
+        if(IsAttacking && _timeSinceLastAttack > 0.2f)
+        {
+            _timeSinceLastAttack = 0;
+            CallAttackEvent();
+        }
+    }
 
     public void CallMoveEvent(Vector2 direction)
     {
@@ -17,6 +50,11 @@ public class TopDownCharacterController : MonoBehaviour
     public void CallLookEvent(Vector2 direction)
     {
         OnLookEvent?.Invoke(direction);
+    }
+
+    public void CallAttackEvent()
+    {
+        OnAttackEvent?.Invoke();
     }
 
 
