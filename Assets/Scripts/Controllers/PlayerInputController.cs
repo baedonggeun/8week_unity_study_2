@@ -12,8 +12,9 @@ public class PlayerInputController : TopDownCharacterController
 {
     private Camera _camera;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _camera = Camera.main;      //해당 Scene 에 존재하는 tag가 main인 카메라를 찾아옴
     }
 

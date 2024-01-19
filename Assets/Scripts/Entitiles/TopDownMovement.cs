@@ -8,10 +8,12 @@ public class TopDownMovement : MonoBehaviour
 
     private Vector3 _movementDirection = Vector2.zero;
     private Rigidbody2D _rigidbody;
+    private CharacterStatsHandler _stats;
 
     private void Awake()
     {
         _controller = GetComponent<TopDownCharacterController>();
+        _stats = GetComponent<CharacterStatsHandler>();
         _rigidbody = GetComponent<Rigidbody2D>();
         /*GetComponent<TopDownMovement> : TopDownMovement 가 달려있는 같은 object 에서 component를 찾아온다는 것
          * inspector 내에서 component 간에 서로가 서로를 인지할 수 있는 방법
@@ -36,7 +38,7 @@ public class TopDownMovement : MonoBehaviour
 
     private void ApplyMovement(Vector2 direction)
     {
-        direction = direction * 5;
+        direction = direction * _stats.CurrentStates.speed;
 
         _rigidbody.velocity = direction;
     }
